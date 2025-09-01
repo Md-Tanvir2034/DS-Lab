@@ -28,7 +28,7 @@ bool isQueueFull();
 
 void display_queue();
 
-//int frontElement();
+
  
 void enqueue(int element) {
 
