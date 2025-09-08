@@ -38,6 +38,77 @@ class List {
 
     }
 
+    void push_back(int val){
+        Node* newNode = new Node(val);
+
+        if(head == NULL){
+            head = tail = newNode;
+
+        } else {
+            tail -> next = newNode ;
+            tail = newNode ;
+        }
+
+    }
+
+    void pop_front(){
+        if(head == NULL){
+            cout << " List is empty \n" ;
+            return ; 
+        }
+
+        Node* temp = head ;
+        head = head -> next ;
+        temp -> next = NULL ;
+        delete temp ;
+
+    }
+
+
+    void pop_back(){
+        if(head == NULL){
+            cout << "List is empty \n" ;
+            return ;
+        }
+
+        Node* temp = head ;
+
+        while(temp -> next != tail){
+            temp = temp -> next ;
+        }
+
+        temp -> next = NULL ;
+        delete tail ;
+        tail = temp ;
+    }
+
+    void insert(int val , int pos){
+        if (pos < 0){
+            cout << "Invalid position \n" ;
+            return ;
+        }
+
+        if(pos == 0){
+            push_front(val);
+            return;
+        }
+
+        Node* temp = head;
+        for(int i = 0 ; i < pos-1; i++){
+            if(temp == NULL){
+                cout << "Position out of bounds \n" ;
+                return ;
+            }
+            temp = temp -> next ;
+        }
+
+        Node* newNode = new Node(val);
+        newNode -> next = temp -> next ;
+        temp-> next = newNode ;
+    }
+
+
+
     void printLL(){
         Node* temp = head ;
 
@@ -46,9 +117,22 @@ class List {
             temp = temp -> next ;
         }
 
-        cout << endl ;
-        
-        
+        cout << endl ;        
+    }
+
+    int search(int key){
+        Node* temp = head ;
+        int index = 0 ;
+
+        while(temp!= NULL){
+            if(temp -> data == key){
+                return index ;
+            }
+            temp = temp -> next ;
+            index++;
+        }
+
+        return -1;
     }
 
 };
@@ -64,7 +148,17 @@ int main(){
         myList.push_front(20);
         myList.push_front(30);
 
+        myList.push_back(40);
+        myList.push_back(50);
+        myList.push_back(60);
+
+        myList.pop_front();
+        myList.pop_back();
+        myList.insert(25,2);
+
         myList.printLL();
+
+        cout << myList.search(25) << endl ;
 
     return 0 ;
 }
