@@ -1,23 +1,14 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int main() {
-   int size ;
-   cin >> size ;
-   string* arr = new string[size];
-   for(int i = 0 ; i < size ; i++){
-    cin >> arr[i];
-   }
+//Name : Md. Tanvir Mahmud Soyad
+//ID: 24-60390-3
+//course : data structure lab
+//section : U
 
-   for(int i = 0 ; i < size ; i++){
-       if(arr[i].length() > 10 ){
-        cout << arr[i][0] << arr[i].length() - 2 << arr[i][arr[i].length()-1] << endl ;
-        
-       }
-         else{
-          cout << arr[i] << endl ;
-       }
-   }
+const int max_size = 50 ;
+int stack[max_size] ;
+int top = -1 ;
 
-    return 0;
-}
+
+void Add_wand(int value)
